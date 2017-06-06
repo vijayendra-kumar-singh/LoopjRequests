@@ -19,7 +19,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class MainActivity extends AppCompatActivity {
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject geo = new JSONObject();
         try {
-            geo.put("type","point");
+            geo.put("type", "point");
             geo.put("coordinates", new JSONArray("[-80, 12]"));
         } catch (JSONException e) {
             Log.d("========G E O========", e.getMessage());
@@ -150,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject geo = new JSONObject();
         try {
-            geo.put("type","point");
+            geo.put("type", "point");
             geo.put("coordinates", new JSONArray("[-80.1, 12]"));
         } catch (JSONException e) {
             Log.d("========G E O========", e.getMessage());
@@ -158,16 +157,16 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject entity = new JSONObject();
         try {
-            entity.put("geometry",geo);
+            entity.put("geometry", geo);
         } catch (JSONException e) {
-            Log.d("--------------","json in json");
+            Log.d("--------------", "json in json");
         }
 
         StringEntity param = null;
         try {
             param = new StringEntity(entity.toString());
         } catch (UnsupportedEncodingException e) {
-            Log.d("--------------","String entity");
+            Log.d("--------------", "String entity");
         }
 
         client.put(getApplicationContext(), url, param, "application/json", new JsonHttpResponseHandler() {
